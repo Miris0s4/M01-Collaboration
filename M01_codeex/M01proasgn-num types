@@ -1,0 +1,22 @@
+#Mirina Martinez-Sosa
+#03/19/2025
+
+#calculating the number of seconds in an hour
+seconds_per_minute = 60
+minutes_per_hour = 60
+seconds_per_hour = seconds_per_minute * minutes_per_hour
+
+#calculating the number of seconds in a day 
+hours_per_day = 24
+seconds_per_day = seconds_per_hour * hours_per_day
+
+#using floating-point division 
+float_division_result = seconds_per_day / seconds_per_hour
+
+#integer division
+int_division_result = seconds_per_day // seconds_per_hour
+
+print(seconds_per_hour)
+print(seconds_per_day)
+print(float_division_result)
+print(int_division_result)
