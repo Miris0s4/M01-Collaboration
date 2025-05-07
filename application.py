@@ -1,7 +1,7 @@
 #import flask si we can use it 
-from flask import Flask, request
+from flask import Flask, request # type: ignore
 #this is how we manipulate the database
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy # type: ignore
 
 app = Flask(__name__)
 #add our database
@@ -55,18 +55,18 @@ def create_book():
     )
     db.session.add(new_book)
     db.session.commit()
-    return jsonify(new_book.to_dict()), 201
+    return jsonify(new_book.to_dict()), 201 # type: ignore
 
 @app.route('/books', methods=['GET'])
 def get_books():
     books = Book.query.all()
-    return jsonify([book.to_dict() for book in books])
+    return jsonify([book.to_dict() for book in books]) # type: ignore
 
 # Get a specific book
 @app.route('/books/<int:id>', methods=['GET'])
 def get_book(id):
     book = Book.query.get_or_404(id)
-    return jsonify(book.to_dict())
+    return jsonify(book.to_dict()) # type: ignore
 
 # Update a book
 @app.route('/books/<int:id>', methods=['PUT'])
@@ -77,7 +77,7 @@ def update_book(id):
     book.author = data.get('author', book.author)
     book.publisher = data.get('publisher', book.publisher)
     db.session.commit()
-    return jsonify(book.to_dict())
+    return jsonify(book.to_dict()) # type: ignore
 
 # Delete a book
 @app.route('/books/<int:id>', methods=['DELETE'])
@@ -85,7 +85,7 @@ def delete_book(id):
     book = Book.query.get_or_404(id)
     db.session.delete(book)
     db.session.commit()
-    return jsonify({"message": "Book deleted"})
+    return jsonify({"message": "Book deleted"}) # type: ignore
 
 if __name__ == '__main__':
     app.run(debug=True)
